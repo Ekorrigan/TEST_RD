@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.12';
+var Version='1.13';
 self.addEventListener('install', function(event) {
   self.skipWaiting();
   console.log('Service Worker Version #' + Version);
@@ -20,6 +20,13 @@ self.addEventListener('install', function(event) {
 
 self.addEventListener('fetch', function(event) {
   console.log(event.request.url);
+  var str = event.request.url;
+  if(str.substring(str.length-5)=="test/"){
+    console.log('test');
+    event.respondWith(function(){ return Version;});  
+  }
+  else{
+    console.log('autre');
   event.respondWith(caches.match(event.request).then(function(response) {
     if (Test==0){ Test++; console.log('version #'+Version);}
     // caches.match() always resolves
@@ -52,6 +59,7 @@ return caches.match('/TEST_RD/gallery/wallpaper.jpg');
       });
     }
   }));
+  }
 });
 
 self.addEventListener('activate', function(event) {
