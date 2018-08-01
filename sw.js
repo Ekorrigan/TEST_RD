@@ -2,11 +2,11 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('v1').then(function(cache) {
       return cache.addAll([
-        '/',
-        '/index.html',
-        '/style.css',
-        '/app.js',
-        '/gallery/snowTroopers.jpg'
+        '/TEST_RD/',
+        '/TEST_RD/index.html',
+        '/TEST_RD/style.css',
+        '/TEST_RD/app.js',
+        '/TEST_RD/gallery/snowTroopers.jpg'
       ]);
     })
   );
@@ -30,7 +30,7 @@ self.addEventListener('fetch', function(event) {
         });
         return response;
       }).catch(function () {
-        return caches.match('/gallery/snowTroopers.jpg');
+        return caches.match('/TEST_RD/gallery/snowTroopers.jpg');
       });
     }
   }));
