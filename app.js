@@ -27,7 +27,7 @@ window.onload = function() {
 	console.log('before imgLoad');
 	var myImage = document.createElement('img');
 	var myFigure = document.createElement('figure');
-	var imageURL = window.URL.createObjectURL('/TEST_RD/gallery/snowTroopers.jpg');
+	var imageURL = '/TEST_RD/gallery/snowTroopers.jpg';
 	console.log(imageURL);
 	myImage.src = imageURL;
 	imgSection.appendChild(myFigure);
