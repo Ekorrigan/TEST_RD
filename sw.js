@@ -6,7 +6,9 @@ self.addEventListener('install', function(event) {
         '/TEST_RD/index.html',
         '/TEST_RD/style.css',
         '/TEST_RD/app.js',
-        '/TEST_RD/gallery/snowTroopers.jpg'
+        '/TEST_RD/gallery/snowTroopers.jpg',
+        '/TEST_RD/gallery/wallpaper.jpg',
+        '/TEST_RD/gallery/wallpaper2.jpg'
       ]);
     })
   );
@@ -24,7 +26,7 @@ self.addEventListener('fetch', function(event) {
         }
         else{
         console.log('réponse par défaut du cache');
-return caches.match('/TEST_RD/gallery/snowTroopers.jpg');
+return caches.match('/TEST_RD/gallery/wallpaper2.jpg');
         }
     } else {
       return fetch(event.request).then(function (response) {
@@ -42,11 +44,11 @@ return caches.match('/TEST_RD/gallery/snowTroopers.jpg');
         }
         else{
         console.log('réponse par défaut du cache');
-return caches.match('/TEST_RD/gallery/snowTroopers.jpg');
+return caches.match('/TEST_RD/gallery/wallpaper2.jpg');
         }
       }).catch(function () {
         console.log('réponse par défaut du cache');
-        return caches.match('/TEST_RD/gallery/snowTroopers.jpg');
+        return caches.match('/TEST_RD/gallery/wallpaper.jpg');
       });
     }
   }));
