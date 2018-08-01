@@ -23,8 +23,8 @@ self.addEventListener('fetch', function(event) {
       return response;
         }
         else{
-          console.log(response.status);
-          throw response.status;
+        console.log('réponse par défaut du cache');
+return caches.match('/TEST_RD/gallery/snowTroopers.jpg');
         }
     } else {
       return fetch(event.request).then(function (response) {
@@ -41,8 +41,8 @@ self.addEventListener('fetch', function(event) {
           return response;
         }
         else{
-          console.log(response.status);
-          throw response.status;
+        console.log('réponse par défaut du cache');
+return caches.match('/TEST_RD/gallery/snowTroopers.jpg');
         }
       }).catch(function () {
         console.log('réponse par défaut du cache');
