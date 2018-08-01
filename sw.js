@@ -1,4 +1,7 @@
-var Version='1.03';
+var Version='1.04';
+var fncVersion = function(){
+  return Version;
+};
 self.addEventListener('install', function(event) {
   self.skipWaiting();
   console.log('Service Worker Version #' + Version);
