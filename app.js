@@ -13,8 +13,9 @@ if ('serviceWorker' in navigator) {
       console.log('# Service worker active #');
 	  document.getElementById("myTitle").innerHTML = "Service worker active";
     }
-	
-	document.getElementById("myTitle").innerHTML += reg.getVersion();
+	var curVer = reg.getVersion();
+	console.log("Version actuelle : v"+curVer);
+	document.getElementById("myTitle").innerHTML += curVer;
   }).catch(function(error) {
     // registration failed
     console.log('Registration failed with ' + error);
