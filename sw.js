@@ -26,7 +26,7 @@ self.addEventListener('fetch', function(event) {
         }
         else{
         console.log('réponse par défaut du cache');
-return caches.match('/TEST_RD/gallery/wallpaper2.jpg');
+return caches.match('/TEST_RD/gallery/wallpaper.jpg');
         }
     } else {
       return fetch(event.request).then(function (response) {
@@ -44,7 +44,7 @@ return caches.match('/TEST_RD/gallery/wallpaper2.jpg');
         }
         else{
         console.log('réponse par défaut du cache');
-return caches.match('/TEST_RD/gallery/wallpaper2.jpg');
+return caches.match('/TEST_RD/gallery/wallpaper.jpg');
         }
       }).catch(function () {
         console.log('réponse par défaut du cache');
