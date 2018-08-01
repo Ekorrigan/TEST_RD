@@ -27,10 +27,10 @@ window.onload = function() {
 	console.log('before imgLoad');
 	var myImage = document.createElement('img');
 	var myFigure = document.createElement('figure');
-	var imageURL = '/TEST_RD/gallery/snowTroopers.jpg';
+	var imageURL = '/TEST_RD/gallery/test.jpg';
 	console.log(imageURL);
 	myImage.src = imageURL;
 	imgSection.appendChild(myFigure);
 	myFigure.appendChild(myImage);
-	console.log(imgSection.innerHtml);
+	console.log(imgSection.innerHTML);
 };
