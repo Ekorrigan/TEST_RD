@@ -17,12 +17,14 @@ self.addEventListener('fetch', function(event) {
     // caches.match() always resolves
     // but in case of success response will have value
     if (response !== undefined) {
+      console.log('réponse du cache');
       return response;
     } else {
       return fetch(event.request).then(function (response) {
         // response may be used only once
         // we need to save clone to put one copy in cache
         // and serve second one
+        console.log('réponse du net');
         let responseClone = response.clone();
         
         caches.open('v1').then(function (cache) {
@@ -30,6 +32,7 @@ self.addEventListener('fetch', function(event) {
         });
         return response;
       }).catch(function () {
+        console.log('réponse par défaut du cache');
         return caches.match('/TEST_RD/gallery/snowTroopers.jpg');
       });
     }
