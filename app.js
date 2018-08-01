@@ -1,6 +1,7 @@
 // register service worker
 
 if ('serviceWorker' in navigator) {
+	console.log('TEST');
   navigator.serviceWorker.register('/TEST_RD/sw.js', { scope: '/TEST_RD/' }).then(function(reg) {
 
     if(reg.installing) {
@@ -29,13 +30,10 @@ if ('serviceWorker' in navigator) {
 
 window.onload = function() {
 	var imgSection = document.querySelector('#section');
-	console.log('before imgLoad');
 	var myImage = document.createElement('img');
 	var myFigure = document.createElement('figure');
 	var imageURL = '/TEST_RD/gallery/test.jpg';
-	console.log(imageURL);
 	myImage.src = imageURL;
 	imgSection.appendChild(myFigure);
 	myFigure.appendChild(myImage);
-	console.log(imgSection.innerHTML);
 };
