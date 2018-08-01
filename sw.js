@@ -22,16 +22,21 @@ self.addEventListener('fetch', function(event) {
       return response;
     } else {
       return fetch(event.request).then(function (response) {
-        // response may be used only once
-        // we need to save clone to put one copy in cache
-        // and serve second one
-        console.log('réponse du net');
-        let responseClone = response.clone();
-        
-        caches.open('v1').then(function (cache) {
-          cache.put(event.request, responseClone);
-        });
-        return response;
+        if(response.status==200){
+          // response may be used only once
+          // we need to save clone to put one copy in cache
+          // and serve second one
+          console.log('réponse du net');
+          let responseClone = response.clone();
+
+          caches.open('v1').then(function (cache) {
+            cache.put(event.request, responseClone);
+          });
+          return response;
+        }
+        else{
+          throw response.status;
+        }
       }).catch(function () {
         console.log('réponse par défaut du cache');
         return caches.match('/TEST_RD/gallery/snowTroopers.jpg');
