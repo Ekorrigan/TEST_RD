@@ -19,6 +19,7 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
+  console.log(event.request);
   event.respondWith(caches.match(event.request).then(function(response) {
     if (Test==0){ Test++; console.log('version #'+Version);}
     // caches.match() always resolves
@@ -51,4 +52,18 @@ return caches.match('/TEST_RD/gallery/wallpaper.jpg');
       });
     }
   }));
+});
+
+self.addEventListener('activate', function(event) {
+  var cacheWhitelist = [Version];
+
+  event.waitUntil(
+    caches.keys().then(function(keyList) {
+      return Promise.all(keyList.map(function(key) {
+        if (cacheWhitelist.indexOf(key) === -1) {
+          return caches.delete(key);
+        }
+      }));
+    })
+  );
 });
