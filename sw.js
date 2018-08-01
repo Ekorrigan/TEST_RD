@@ -1,5 +1,5 @@
 self.addEventListener('install', function(event) {
-  Version='v6';
+  Version='v0';
   console.log('Service Worker Version #' + Version);
   event.waitUntil(
     caches.open(Version).then(function(cache) {
@@ -28,7 +28,7 @@ self.addEventListener('fetch', function(event) {
         }
         else{
         console.log('cache not found - réponse par défaut du cache ');
-return caches.match('/TEST_RD/gallery/wallpaper.jpg');
+return caches.match('/TEST_RD/gallery/snowTroopers.jpg');
         }
     } else {
       return fetch(event.request).then(function (response) {
@@ -46,11 +46,11 @@ return caches.match('/TEST_RD/gallery/wallpaper.jpg');
         }
         else{
         console.log('Net not found - réponse par défaut du cache');
-return caches.match('/TEST_RD/gallery/wallpaper.jpg');
+return caches.match('/TEST_RD/gallery/snowTroopers.jpg');
         }
       }).catch(function () {
         console.log('réponse par défaut du cache');
-        return caches.match('/TEST_RD/gallery/wallpaper.jpg');
+        return caches.match('/TEST_RD/gallery/snowTroopers.jpg');
       });
     }
   }));
