@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.06';
+var Version='1.07';
 var fncVersion = function(){
   return Version;
 };
@@ -18,9 +18,6 @@ self.addEventListener('install', function(event) {
       ]);
     })
   );
-});
-self.addEventListener('getVersion', function(event){
-    event.respondWith(Version);
 });
 
 self.addEventListener('fetch', function(event) {
