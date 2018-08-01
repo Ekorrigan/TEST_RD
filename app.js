@@ -21,9 +21,9 @@ if ('serviceWorker' in navigator) {
 }
 
 
-var imgSection = document.querySelector('#section');
 
 window.onload = function() {
+	var imgSection = document.querySelector('#section');
 	console.log('before imgLoad');
 	var myImage = document.createElement('img');
 	var myFigure = document.createElement('figure');
