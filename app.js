@@ -23,6 +23,7 @@ if ('serviceWorker' in navigator) {
 
 
 window.onload = function() {
+	document.getElementById("myTitle").innerHTML += getVersion();
 	var imgSection = document.querySelector('#section');
 	console.log('before imgLoad');
 	var myImage = document.createElement('img');
