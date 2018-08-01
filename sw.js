@@ -1,4 +1,4 @@
-var Version='333';
+var Version='1.1';
 self.addEventListener('install', function(event) {
   self.skipWaiting();
   console.log('Service Worker Version #' + Version);
