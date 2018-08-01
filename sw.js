@@ -10,6 +10,7 @@ self.addEventListener('install', function(event) {
         '/TEST_RD/',
         '/TEST_RD/index.html',
         '/TEST_RD/style.css',
+        '/TEST_RD/app.js',
         '/TEST_RD/gallery/wallpaper.jpg',
         '/TEST_RD/gallery/wallpaper2.jpg'
       ]);
