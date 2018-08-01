@@ -1,6 +1,8 @@
 self.addEventListener('install', function(event) {
+  Version='v4';
+  console.log('Service Worker Version #' + Version);
   event.waitUntil(
-    caches.open('v3').then(function(cache) {
+    caches.open(Version).then(function(cache) {
       return cache.addAll([
         '/TEST_RD/',
         '/TEST_RD/index.html',
