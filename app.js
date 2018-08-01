@@ -59,6 +59,7 @@ window.onload = function() {
       myImage.src = imageURL;
       imgSection.appendChild(myFigure);
       myFigure.appendChild(myImage);
+      console.log(imgSection.innerHtml());
     }, function(Error) {
       console.log(Error);
     });
