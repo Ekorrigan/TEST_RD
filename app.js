@@ -50,7 +50,7 @@ var imgSection = document.querySelector('#section');
 
 window.onload = function() {
 
-    imgLoad('/TEST_RD/gallery/test.jpg').then(function(imgResponse) {
+    imgLoad('/TEST_RD/gallery/snowTroopers.jpg').then(function(imgResponse) {
 
       var myImage = document.createElement('img');
       var myFigure = document.createElement('figure');
