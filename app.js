@@ -1,7 +1,7 @@
 // register service worker
 
 if ('serviceWorker' in navigator) {
-	console.log('TEST01');
+	console.log('TEST02');
   navigator.serviceWorker.register('/TEST_RD/sw.js', { scope: '/TEST_RD/' }).then(function(reg) {
 
     if(reg.installing) {
@@ -13,9 +13,8 @@ if ('serviceWorker' in navigator) {
     } else if(reg.active) {
       console.log('# Service worker active #');
 	  document.getElementById("myTitle").innerHTML = "Service worker active";
-    }	var v1 = reg.Version;
-	  var v2 = reg.fncVersion();
-	  console.log("v1 : " + v1 + " - v2 : "+ v2);
+    }
+	console.log("version actuelle : " + reg.Version);
 	document.getElementById("myTitle").innerHTML += curVer;
   }).catch(function(error) {
     // registration failed
