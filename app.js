@@ -62,5 +62,4 @@ window.onload = function() {
     }, function(Error) {
       console.log(Error);
     });
-  }
 };
