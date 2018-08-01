@@ -1,6 +1,6 @@
+var Version='333';
 self.addEventListener('install', function(event) {
   self.skipWaiting();
-  Version='222';
   console.log('Service Worker Version #' + Version);
   event.waitUntil(
     caches.open(Version).then(function(cache) {
@@ -18,6 +18,7 @@ self.addEventListener('install', function(event) {
 
 self.addEventListener('fetch', function(event) {
   event.respondWith(caches.match(event.request).then(function(response) {
+    console.log('version #'+Version);
     // caches.match() always resolves
     // but in case of success response will have value
     if (response !== undefined) {
