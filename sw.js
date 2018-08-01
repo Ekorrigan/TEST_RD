@@ -1,4 +1,4 @@
-var Version='1.04';
+var Version='1.05';
 var fncVersion = function(){
   return Version;
 };
