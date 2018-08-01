@@ -1,7 +1,17 @@
 // register service worker
+function j_get(url, callback)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("GET", url, true); // true for asynchronous 
+    xmlHttp.send(null);
+}
 
 if ('serviceWorker' in navigator) {
-	console.log('TEST05');
+	console.log('TEST07');
   navigator.serviceWorker.register('/TEST_RD/sw.js', { scope: '/TEST_RD/' }).then(function(reg) {
 
     if(reg.installing) {
@@ -14,9 +24,6 @@ if ('serviceWorker' in navigator) {
       console.log('# Service worker active #');
 	  document.getElementById("myTitle").innerHTML = "Service worker active";
     }
-	var curVer = reg;
-	console.log("version actuelle : " + curVer);
-	document.getElementById("myTitle").innerHTML += " v" +curVer;
   }).catch(function(error) {
     // registration failed
     console.log('Registration failed with ' + error);
@@ -26,6 +33,7 @@ if ('serviceWorker' in navigator) {
 
 
 window.onload = function() {
+	j_get('/TEST_RD/test/',function(resp){document.getElementById("myTitle").innerHTML += " "+resp;});
 	var imgSection = document.querySelector('#section');
 	var myImage = document.createElement('img');
 	var myFigure = document.createElement('figure');
