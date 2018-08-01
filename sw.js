@@ -1,4 +1,5 @@
-var Version='1.05';
+var Test=0;
+var Version='1.06';
 var fncVersion = function(){
   return Version;
 };
@@ -24,16 +25,14 @@ self.addEventListener('getVersion', function(event){
 
 self.addEventListener('fetch', function(event) {
   event.respondWith(caches.match(event.request).then(function(response) {
-    console.log('version #'+Version);
+    if (Test==0){ Test++; console.log('version #'+Version);}
     // caches.match() always resolves
     // but in case of success response will have value
     if (response !== undefined) {
         if(response.status==200){
-      console.log('réponse du cache');
       return response;
         }
         else{
-        console.log('cache not found - réponse par défaut du cache ');
 return caches.match('/TEST_RD/gallery/wallpaper.jpg');
         }
     } else {
@@ -42,7 +41,6 @@ return caches.match('/TEST_RD/gallery/wallpaper.jpg');
           // response may be used only once
           // we need to save clone to put one copy in cache
           // and serve second one
-          console.log('réponse du net');
           let responseClone = response.clone();
 
           caches.open('v1').then(function (cache) {
@@ -51,11 +49,9 @@ return caches.match('/TEST_RD/gallery/wallpaper.jpg');
           return response;
         }
         else{
-        console.log('Net not found - réponse par défaut du cache');
 return caches.match('/TEST_RD/gallery/wallpaper.jpg');
         }
       }).catch(function () {
-        console.log('réponse par défaut du cache');
         return caches.match('/TEST_RD/gallery/wallpaper.jpg');
       });
     }
