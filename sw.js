@@ -17,9 +17,15 @@ self.addEventListener('fetch', function(event) {
     // caches.match() always resolves
     // but in case of success response will have value
     if (response !== undefined) {
+        if(response.status==200){
       console.log('réponse du cache');
       console.log(response)
       return response;
+        }
+        else{
+          console.log(response.status);
+          throw response.status;
+        }
     } else {
       return fetch(event.request).then(function (response) {
         if(response.status==200){
@@ -35,6 +41,7 @@ self.addEventListener('fetch', function(event) {
           return response;
         }
         else{
+          console.log(response.status);
           throw response.status;
         }
       }).catch(function () {
