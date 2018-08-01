@@ -1,5 +1,5 @@
 self.addEventListener('install', function(event) {
-  Version='v4';
+  Version='v5';
   console.log('Service Worker Version #' + Version);
   event.waitUntil(
     caches.open(Version).then(function(cache) {
@@ -27,8 +27,8 @@ self.addEventListener('fetch', function(event) {
       return response;
         }
         else{
-        console.log('réponse par défaut du cache');
-return caches.match('/TEST_RD/gallery/wallpaper.jpg');
+        console.log('cache not found - réponse par défaut du cache ');
+return caches.match('/TEST_RD/gallery/wallpaper2.jpg');
         }
     } else {
       return fetch(event.request).then(function (response) {
@@ -45,12 +45,12 @@ return caches.match('/TEST_RD/gallery/wallpaper.jpg');
           return response;
         }
         else{
-        console.log('réponse par défaut du cache');
-return caches.match('/TEST_RD/gallery/wallpaper.jpg');
+        console.log('Net not found - réponse par défaut du cache');
+return caches.match('/TEST_RD/gallery/wallpaper2.jpg');
         }
       }).catch(function () {
         console.log('réponse par défaut du cache');
-        return caches.match('/TEST_RD/gallery/wallpaper.jpg');
+        return caches.match('/TEST_RD/gallery/wallpaper2.jpg');
       });
     }
   }));
