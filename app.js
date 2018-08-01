@@ -49,13 +49,13 @@ function imgLoad(url) {
 var imgSection = document.querySelector('#section');
 
 window.onload = function() {
-
+    console.log('before imgLoad');
     imgLoad('/TEST_RD/gallery/snowTroopers.jpg').then(function(imgResponse) {
 
       var myImage = document.createElement('img');
       var myFigure = document.createElement('figure');
       var imageURL = window.URL.createObjectURL(imgResponse);
-
+      console.log(imageURL);
       myImage.src = imageURL;
       imgSection.appendChild(myFigure);
       myFigure.appendChild(myImage);
