@@ -46,7 +46,7 @@ function imgLoad(url) {
   });
 }
 
-var imgSection = document.querySelector('section');
+var imgSection = document.querySelector('#section');
 
 window.onload = function() {
 
