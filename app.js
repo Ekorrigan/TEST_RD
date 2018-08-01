@@ -1,7 +1,7 @@
 // register service worker
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js', { scope: '/' }).then(function(reg) {
+  navigator.serviceWorker.register('/TEST_RD/sw.js', { scope: '/TEST_RD/' }).then(function(reg) {
 
     if(reg.installing) {
       console.log('Service worker installing');
@@ -50,7 +50,7 @@ var imgSection = document.querySelector('section');
 
 window.onload = function() {
 
-    imgLoad('/gallery/test.jpg').then(function(imgResponse) {
+    imgLoad('/TEST_RD/gallery/test.jpg').then(function(imgResponse) {
 
       var myImage = document.createElement('img');
       var myFigure = document.createElement('figure');
