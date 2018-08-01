@@ -13,7 +13,8 @@ if ('serviceWorker' in navigator) {
       console.log('# Service worker active #');
 	  document.getElementById("myTitle").innerHTML = "Service worker active";
     }
-
+	
+	document.getElementById("myTitle").innerHTML += reg.getVersion();
   }).catch(function(error) {
     // registration failed
     console.log('Registration failed with ' + error);
@@ -23,7 +24,6 @@ if ('serviceWorker' in navigator) {
 
 
 window.onload = function() {
-	document.getElementById("myTitle").innerHTML += getVersion();
 	var imgSection = document.querySelector('#section');
 	console.log('before imgLoad');
 	var myImage = document.createElement('img');
