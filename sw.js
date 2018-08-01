@@ -1,4 +1,4 @@
-var Version='1.02';
+var Version='1.03';
 self.addEventListener('install', function(event) {
   self.skipWaiting();
   console.log('Service Worker Version #' + Version);
@@ -27,7 +27,6 @@ self.addEventListener('fetch', function(event) {
     if (response !== undefined) {
         if(response.status==200){
       console.log('réponse du cache');
-      console.log(response)
       return response;
         }
         else{
