@@ -1,11 +1,11 @@
 var Test=0;
-var Version='1.09';
+var Version='1.10';
 self.addEventListener('install', function(event) {
   self.skipWaiting();
   console.log('Service Worker Version #' + Version);
   event.waitUntil(
-    Test=0;
     caches.open(Version).then(function(cache) {
+    Test=0;
       return cache.addAll([
         '/TEST_RD/',
         '/TEST_RD/index.html',
