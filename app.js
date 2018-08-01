@@ -14,6 +14,9 @@ if ('serviceWorker' in navigator) {
 	  document.getElementById("myTitle").innerHTML = "Service worker active";
     }
 	var curVer = reg.getVersion();
+	var v1 = reg.Version;
+	  var v2 = reg.fncVersion();
+	  console.log("v1 : " + v1 + " - v2 : "+ v2);
 	console.log("Version actuelle : v"+curVer);
 	document.getElementById("myTitle").innerHTML += curVer;
   }).catch(function(error) {
