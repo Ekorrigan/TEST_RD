@@ -60,24 +60,24 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-// Au clic du bouton de notification
-document.querySelector("#on-activation-request")
-  .addEventListener("click", () => {
-    // On récupère le Service Worker
-    // qui a fini de s'installer
-    // (waiting)
-    navigator.serviceWorker
-      .getRegistration()
-      .then(registration => {
-        // Et on lui envoie le
-        // message d'activation
-        registration.waiting
-          .postMessage("skipWaiting");
-      });
-  });
-
 window.onload = function() {
 	j_get("/TEST_RD/version/",function(text){ document.getElementById("myTitle").innerHTML += " v"+text;})
+
+	// Au clic du bouton de notification
+	document.querySelector("#on-activation-request")
+	  .addEventListener("click", () => {
+	    // On récupère le Service Worker
+	    // qui a fini de s'installer
+	    // (waiting)
+	    navigator.serviceWorker
+	      .getRegistration()
+	      .then(registration => {
+		// Et on lui envoie le
+		// message d'activation
+		registration.waiting
+		  .postMessage("skipWaiting");
+	      });
+	  });	
 	
 	var imgSection = document.querySelector('#section');
 	var myImage = document.createElement('img');
