@@ -11,7 +11,7 @@ function j_get(url, callback)
 }
 
 if ('serviceWorker' in navigator) {
-	console.log('TEST09');
+	console.log('TEST10');
   navigator.serviceWorker.register('/TEST_RD/sw.js', { scope: '/TEST_RD/' }).then(function(reg) {
 
     if(reg.installing) {
