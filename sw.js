@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.29';
+var Version='1.30';
 self.addEventListener('install', function(event) {
   console.log('Service Worker Version #' + Version);
   event.waitUntil(
@@ -9,9 +9,7 @@ self.addEventListener('install', function(event) {
         '/TEST_RD/',
         '/TEST_RD/index.html',
         '/TEST_RD/style.css',
-        '/TEST_RD/app.js',
-        '/TEST_RD/gallery/wallpaper.jpg',
-        '/TEST_RD/gallery/wallpaper2.jpg'
+        '/TEST_RD/app.js'
       ]);
     })
   );
