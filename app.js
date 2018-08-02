@@ -76,8 +76,8 @@ window.onload = function() {
 	      .then(registration => {
 		// Et on lui envoie le
 		// message d'activation
-		registration.waiting
-		  .postMessage("skipWaiting");
+		  var sw = registration.waiting;
+		  sw.postMessage("skipWaiting");
 	      });
 	  });	
 	
