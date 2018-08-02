@@ -51,8 +51,10 @@ if ('serviceWorker' in navigator) {
       console.log('# Service worker installed #');
 	  document.getElementById("myTitle").innerHTML = "Service worker installed";
     } else if(reg.active) {
-      console.log('# Service worker active #');
-	  document.getElementById("myTitle").innerHTML = "Service worker active";
+	j_get("/TEST_RD/version/",function(text){ 
+      		console.log('# Service worker active #',text);
+	  	document.getElementById("myTitle").innerHTML = "Service worker active v"+text;
+	});
     }
   }).catch(function(error) {
     // registration failed
