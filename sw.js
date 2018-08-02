@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.35b';
+var Version='1.36';
 self.addEventListener('install', function(event) {
   console.log('Service Worker Version #' + Version);
 });
@@ -88,7 +88,8 @@ self.addEventListener("message", event => {
 			'/TEST_RD/',
 			'/TEST_RD/index.html',
 			'/TEST_RD/style.css',
-			'/TEST_RD/app.js'
+			'/TEST_RD/app.js',
+			'/TEST_RD/gallery/wallpaper.jpg'
 		      ]);
 		    });
   }
