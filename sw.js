@@ -3,15 +3,7 @@ var Version='1.31';
 self.addEventListener('install', function(event) {
   console.log('Service Worker Version #' + Version);
   event.waitUntil(
-    caches.open(Version).then(function(cache) {
-    Test=0;
-      return cache.addAll([
-        '/TEST_RD/',
-        '/TEST_RD/index.html',
-        '/TEST_RD/style.css',
-        '/TEST_RD/app.js'
-      ]);
-    })
+
   );
 });
 
@@ -75,6 +67,16 @@ self.addEventListener('activate', function(event) {
 					return caches.delete(key);
 				}
 			}));
+		}).then(function(){
+		    caches.open(Version).then(function(cache) {
+		    Test=0;
+		      return cache.addAll([
+			'/TEST_RD/',
+			'/TEST_RD/index.html',
+			'/TEST_RD/style.css',
+			'/TEST_RD/app.js'
+		      ]);
+		    });		
 		})
 	);
 });
