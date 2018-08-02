@@ -78,7 +78,8 @@ window.onload = function() {
 		// message d'activation
 		  var sw = registration.waiting;
 		  sw.postMessage("skipWaiting");
-	      }).then(location.reload());
+		  location.reload(); 
+	      });
 	  });	
 	
 	var imgSection = document.querySelector('#section');
