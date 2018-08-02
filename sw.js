@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.34';
+var Version='1.34b';
 self.addEventListener('install', function(event) {
   console.log('Service Worker Version #' + Version);
 });
