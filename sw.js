@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.18';
+var Version='1.19';
 self.addEventListener('install', function(event) {
   self.skipWaiting();
   console.log('Service Worker Version #' + Version);
@@ -19,6 +19,23 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
+  if (requestUrl.pathname === "/version") {
+    event.respondWith(
+      new Response(
+        new Blob(
+          [Version],
+          {type : "text/html"}
+        ),
+        {
+          status: 200,
+          statusText: "OK",
+          headers: {
+            "Content-Type": "text/html",
+          }
+        }
+      )
+    );
+  }else{
 	event.respondWith(caches.match(event.request).then(function(response) {
 		if (Test==0){ Test++; console.log('version #'+Version);}
 		// caches.match() always resolves
@@ -59,6 +76,7 @@ self.addEventListener('fetch', function(event) {
 			});
 		}
 	}));
+  }
 });
 
 self.addEventListener('activate', function(event) {
