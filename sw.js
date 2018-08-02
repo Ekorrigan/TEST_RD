@@ -19,8 +19,11 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-	console.log(event.request.url.pathname);
-  if (event.request.url.pathname === "/version") {
+  const curUrl = new URL(
+    event.request.url
+  );
+	console.log(curUrl.pathname);
+  if (curUrl.pathname === "/version") {
     event.respondWith(
       new Response(
         new Blob(
