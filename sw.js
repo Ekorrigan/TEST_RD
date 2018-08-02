@@ -1,7 +1,6 @@
 var Test=0;
-var Version='1.26';
+var Version='1.27';
 self.addEventListener('install', function(event) {
-  self.skipWaiting();
   console.log('Service Worker Version #' + Version);
   event.waitUntil(
     caches.open(Version).then(function(cache) {
