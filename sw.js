@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.27';
+var Version='1.28';
 self.addEventListener('install', function(event) {
   console.log('Service Worker Version #' + Version);
   event.waitUntil(
