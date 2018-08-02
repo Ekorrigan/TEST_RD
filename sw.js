@@ -49,13 +49,6 @@ self.addEventListener('fetch', function(event) {
 					cache.put(event.request, response.clone());
 				});
 			}
-			fetch(event.request).then(function (resp) {
-				if(resp.status==200){
-					caches.open(Version).then(function (cache) {
-						cache.put(event.request, resp.clone());
-					});
-				}
-			});
 			return response;
 		} else {
 			return fetch(event.request).then(function (response) {
@@ -70,11 +63,6 @@ self.addEventListener('fetch', function(event) {
 					});
 					return response;
 				}
-				else{
-					return caches.match('/TEST_RD/gallery/wallpaper.jpg');
-				}
-			}).catch(function () {
-				return caches.match('/TEST_RD/gallery/wallpaper.jpg');
 			});
 		}
 	}));
