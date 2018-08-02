@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.35';
+var Version='1.35b';
 self.addEventListener('install', function(event) {
   console.log('Service Worker Version #' + Version);
 });
@@ -36,6 +36,7 @@ self.addEventListener('fetch', function(event) {
 					cache.put(event.request, response.clone());
 				});
 			}
+	  console.log("cache : "+curUrl.pathname);
 			return response;
 		} else {
 			return fetch(event.request).then(function (response) {
@@ -48,6 +49,7 @@ self.addEventListener('fetch', function(event) {
 					caches.open(Version).then(function (cache) {
 						cache.put(event.request, responseClone);
 					});
+	  				console.log("NetWork : "+curUrl.pathname);
 					return response;
 				}
 			});
@@ -89,6 +91,5 @@ self.addEventListener("message", event => {
 			'/TEST_RD/app.js'
 		      ]);
 		    });
-	console.log("rechargement du cache");
   }
 });
