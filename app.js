@@ -11,7 +11,7 @@ function j_get(url, callback)
 }
 
 if ('serviceWorker' in navigator) {
-	console.log('TEST08');
+	console.log('TEST09');
   navigator.serviceWorker.register('/TEST_RD/sw.js', { scope: '/TEST_RD/' }).then(function(reg) {
 
     if(reg.installing) {
@@ -33,7 +33,7 @@ if ('serviceWorker' in navigator) {
 
 
 window.onload = function() {
-	document.getElementById("myTitle").innerHTML += " v1.16";
+	document.getElementById("myTitle").innerHTML += " v1.18";
 	var imgSection = document.querySelector('#section');
 	var myImage = document.createElement('img');
 	var myFigure = document.createElement('figure');
