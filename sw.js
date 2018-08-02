@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.19';
+var Version='1.20';
 self.addEventListener('install', function(event) {
   self.skipWaiting();
   console.log('Service Worker Version #' + Version);
@@ -19,7 +19,7 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-  if (requestUrl.pathname === "/version") {
+  if (event.request.url.pathname === "/version") {
     event.respondWith(
       new Response(
         new Blob(
