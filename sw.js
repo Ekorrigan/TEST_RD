@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.17';
+var Version='1.18';
 self.addEventListener('install', function(event) {
   self.skipWaiting();
   console.log('Service Worker Version #' + Version);
@@ -26,11 +26,14 @@ self.addEventListener('fetch', function(event) {
 		if (response !== undefined) {
 			if(response.status!=200){
 				response= caches.match('/TEST_RD/gallery/wallpaper.jpg');
+				caches.open(Version).then(function (cache) {
+					cache.put(event.request, response.clone());
+				});
 			}
 			fetch(event.request).then(function (resp) {
 				if(resp.status==200){
-					caches.open('v1').then(function (cache) {
-						cache.put(event.request, resp);
+					caches.open(Version).then(function (cache) {
+						cache.put(event.request, resp.clone());
 					});
 				}
 			});
@@ -43,7 +46,7 @@ self.addEventListener('fetch', function(event) {
 					// and serve second one
 					let responseClone = response.clone();
 
-					caches.open('v1').then(function (cache) {
+					caches.open(Version).then(function (cache) {
 						cache.put(event.request, responseClone);
 					});
 					return response;
