@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.34c';
+var Version='1.34d';
 self.addEventListener('install', function(event) {
   console.log('Service Worker Version #' + Version);
 });
@@ -66,7 +66,7 @@ self.addEventListener('activate', function(event) {
 					return caches.delete(key);
 				}
 			}));
-		});
+		})
 	);
 });
 // A chaque fois qu'on reçoit un
