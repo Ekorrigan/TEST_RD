@@ -92,3 +92,14 @@ self.addEventListener('activate', function(event) {
 		})
 	);
 });
+// A chaque fois qu'on reçoit un
+// message d'une page web
+self.addEventListener("message", event => {
+  // On vérifie si c'est un signal
+  // d'activation
+  if (event.data === "skipWaiting") {
+    // Et si c'est le cas, on force
+    // l'activation
+    self.skipWaiting();
+  }
+});
