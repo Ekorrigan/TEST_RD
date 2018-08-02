@@ -77,7 +77,7 @@ window.onload = function() {
 		// Et on lui envoie le
 		// message d'activation
 		  var sw = registration.waiting;
-		  sw.postMessage("skipWaiting");
+		  sw.postMessage("skipWaiting").then(location.reload());
 	      });
 	  });	
 	
