@@ -38,7 +38,7 @@ window.onload = function() {
 	var imgSection = document.querySelector('#section');
 	var myImage = document.createElement('img');
 	var myFigure = document.createElement('figure');
-	var imageURL = '/TEST_RD/gallery/test.jpg';
+	var imageURL = '/TEST_RD/gallery/wallpaper.jpg';
 	myImage.src = imageURL;
 	imgSection.appendChild(myFigure);
 	myFigure.appendChild(myImage);
