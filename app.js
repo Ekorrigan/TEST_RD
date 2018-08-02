@@ -10,8 +10,38 @@ function j_get(url, callback)
     xmlHttp.send(null);
 }
 
+function displayNotification() {
+  document
+    .querySelector("#notification")
+    .style.display = "block";
+}
+
+
+
 if ('serviceWorker' in navigator) {
-	console.log('TEST10');
+  navigator.serviceWorker.getRegistration().then(registration => {
+    registration.addEventListener("updatefound",() => {
+		// On récupère le Service
+		// Worker en cours
+		// d'installation
+		const newWorker =	registration.installing;
+
+        // On se branche à ses mises
+        // à jour pour savoir quand
+        // il a fini de s'installer
+        newWorker.addEventListener("statechange",() => {
+            if (newWorker.state === "installed") {
+              // Un nouveau Service
+              // Worker est prêt.
+              // Donc on affiche la
+              // notification
+              displayNotification();
+            }
+          }
+        );
+      }
+    );
+  });
   navigator.serviceWorker.register('/TEST_RD/sw.js', { scope: '/TEST_RD/' }).then(function(reg) {
 
     if(reg.installing) {
