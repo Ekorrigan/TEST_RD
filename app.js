@@ -53,7 +53,7 @@ if ('serviceWorker' in navigator) {
     } else if(reg.active) {
 	j_get("/TEST_RD/version/",function(text){ 
       		console.log('# Service worker active #',text);
-	  	document.getElementById("myTitle").innerHTML = "Service worker active v"+text;
+	  	document.getElementById("myTitle").innerHTML = "Service worker active";
 	});
     }
   }).catch(function(error) {
