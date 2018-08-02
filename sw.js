@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.34d';
+var Version='1.35';
 self.addEventListener('install', function(event) {
   console.log('Service Worker Version #' + Version);
 });
@@ -88,6 +88,7 @@ self.addEventListener("message", event => {
 			'/TEST_RD/style.css',
 			'/TEST_RD/app.js'
 		      ]);
-		    });	
+		    });
+	console.log("rechargement du cache");
   }
 });
