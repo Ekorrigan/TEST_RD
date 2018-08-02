@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.33';
+var Version='1.34';
 self.addEventListener('install', function(event) {
   console.log('Service Worker Version #' + Version);
 });
@@ -58,23 +58,14 @@ self.addEventListener('fetch', function(event) {
 
 self.addEventListener('activate', function(event) {
 	event.waitUntil(
+		console.log("suppression du cache");
 		caches.keys().then(function(keyList) {
 			return Promise.all(keyList.map(function(key) {
 				if (key!== Version) {
 					return caches.delete(key);
 				}
 			}));
-		}).then(function(){
-		    caches.open(Version).then(function(cache) {
-		    Test=0;
-		      return cache.addAll([
-			'/TEST_RD/',
-			'/TEST_RD/index.html',
-			'/TEST_RD/style.css',
-			'/TEST_RD/app.js'
-		      ]);
-		    });		
-		})
+		});
 	);
 });
 // A chaque fois qu'on reçoit un
@@ -86,5 +77,16 @@ self.addEventListener("message", event => {
     // Et si c'est le cas, on force
     // l'activation
     self.skipWaiting();
+	  console.log("skipWaiting");
+	  
+		    caches.open(Version).then(function(cache) {
+		    Test=0;
+		      return cache.addAll([
+			'/TEST_RD/',
+			'/TEST_RD/index.html',
+			'/TEST_RD/style.css',
+			'/TEST_RD/app.js'
+		      ]);
+		    });	
   }
 });
