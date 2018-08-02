@@ -33,7 +33,8 @@ if ('serviceWorker' in navigator) {
 
 
 window.onload = function() {
-	document.getElementById("myTitle").innerHTML += " v1.18";
+	j_get("/TEST_RD/version/",function(text){ document.getElementById("myTitle").innerHTML += " v"+text;})
+	
 	var imgSection = document.querySelector('#section');
 	var myImage = document.createElement('img');
 	var myFigure = document.createElement('figure');
