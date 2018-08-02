@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.22';
+var Version='1.24';
 self.addEventListener('install', function(event) {
   self.skipWaiting();
   console.log('Service Worker Version #' + Version);
@@ -22,8 +22,7 @@ self.addEventListener('fetch', function(event) {
   const curUrl = new URL(
     event.request.url
   );
-	console.log(curUrl.pathname);
-  if (curUrl.pathname === "/version") {
+  if (curUrl.pathname === "/TEST_RD/version/") {
     event.respondWith(
       new Response(
         new Blob(
