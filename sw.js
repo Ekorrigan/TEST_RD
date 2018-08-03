@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.46';
+var Version='1.47';
 self.addEventListener('install', function(event) {
   console.log('Service Worker Version #' + Version);
 });
@@ -85,20 +85,21 @@ self.addEventListener("message", event => {
 		Promise.all(keyList.map(function(key) {
 			if (key!== Version) {
 				console.log("delete cache : "+key);
-				caches.delete(key);
+				return caches.delete(key);
 			}
-		}));
+		})).then(()=>{
+			console.log("after delete");
+			caches.open(Version).then(function(cache) {
+				Test=0;
+					return cache.addAll([
+					'/TEST_RD/',
+					'/TEST_RD/index.html',
+					'/TEST_RD/style.css',
+					'/TEST_RD/app.js',
+					'/TEST_RD/gallery/wallpaper.jpg'
+				]);
+			});
+		});
 	});
-	console.log("after delete");
-	caches.open(Version).then(function(cache) {
-	    Test=0;
-	      return cache.addAll([
-		'/TEST_RD/',
-		'/TEST_RD/index.html',
-		'/TEST_RD/style.css',
-		'/TEST_RD/app.js',
-		'/TEST_RD/gallery/wallpaper.jpg'
-	      ]);
-	    });
   }
 });
