@@ -81,8 +81,14 @@ self.addEventListener("message", event => {
     // l'activation
     self.skipWaiting();
 	  console.log("skipWaiting");
-	  
-		    caches.open(Version).then(function(cache) {
+		caches.keys().then(function(keyList) {
+			return Promise.all(keyList.map(function(key) {
+				if (key!== Version) {
+					return caches.delete(key);
+				}
+			}));
+		});	  
+		caches.open(Version).then(function(cache) {
 		    Test=0;
 		      return cache.addAll([
 			'/TEST_RD/',
