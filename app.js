@@ -11,9 +11,7 @@ function j_get(url, callback)
 }
 
 function displayNotification() {
-  document
-    .querySelector("#notification")
-    .style.display = "block";
+	document.querySelector("#notification").style.display = "block";
 }
 
 
@@ -63,7 +61,18 @@ if ('serviceWorker' in navigator) {
 }
 
 window.onload = function() {
-	j_get("/TEST_RD/version/",function(text){ document.getElementById("myTitle").innerHTML += " v"+text;})
+	var curVer;
+	j_get("/TEST_RD/version/",function(text){ 
+		document.getElementById("myTitle").innerHTML += " v"+text;
+		curVer = localStorage.getItem("curVer");
+		if(!curVer){
+			localStorage.setItem("curVer", text);
+		}
+		else if(curVer!=text){
+              		displayNotification();
+		}
+		console.log(curVer+"/"+text);
+	})
 
 	// Au clic du bouton de notification
 	document.querySelector("#on-activation-request")
