@@ -89,7 +89,11 @@ window.onload = function() {
 	// Au clic du bouton de notification
 	document.querySelector("#on-activation-request")
 	  .addEventListener("click", () => {
-		console.log("ok pour mise à jour");
+		j_get("/TEST_RD/version/",function(text){ 
+			console.log("ok pour mise à jour");
+			localStorage.setItem("curVer", text);
+			console.log("nouvelle version : "+text);
+		});
 			  setTimeout(function(){ 
 				console.log("reload");
 				hideNotification();
