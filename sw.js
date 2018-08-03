@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.48b';
+var Version='1.48c';
 self.addEventListener('install', function(event) {
   console.log('Service Worker Version #' + Version);
 });
@@ -103,5 +103,6 @@ self.addEventListener("message", event => {
 			});
 		});
 	});
+	console.log("fin activation");
   }
 });
