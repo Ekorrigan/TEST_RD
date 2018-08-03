@@ -18,7 +18,7 @@ function displayNotification() {
 function hideNotification() {
 	document.querySelector("#notification").style.display = "none";
 	j_get("/TEST_RD/version/",function(text){ 
-		document.getElementById("myTitle").innerHTML += " v"+text;
+		document.getElementById("myTitle").innerHTML = "l'application est prête";
 		localStorage.setItem("curVer", text);
 	});	
 }
