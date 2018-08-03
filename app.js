@@ -89,6 +89,11 @@ window.onload = function() {
 	document.querySelector("#on-activation-request")
 	  .addEventListener("click", () => {
 		console.log("ok pour mise à jour");
+			  setTimeout(function(){ 
+				console.log("reload");
+				hideNotification();
+				location.reload();  
+			  }, 3000);	
 	    // On récupère le Service Worker
 	    // qui a fini de s'installer
 	    // (waiting)
@@ -100,19 +105,7 @@ window.onload = function() {
 		  var sw = registration.waiting;
 		  if(sw){
 		  	sw.postMessage("skipWaiting");
-			  console.log("2 before reload");
-			  setTimeout(function(){ 
-				console.log("reload");
-				hideNotification();
-				location.reload();  
-			  }, 3000);	
-		  }
-		  console.log("before reload");
-		  setTimeout(function(){ 
-		  	console.log("reload");
-		  	hideNotification();
-		  	location.reload();  
-		  }, 3000);		  
+		  }	  
 	      });
 	  });	
 	
