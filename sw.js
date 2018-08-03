@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.70';
+var Version='1.71';
 var forceNet = false;
 self.addEventListener('install', function(event) {
   console.log('Service Worker Version #' + Version);
@@ -59,10 +59,16 @@ self.addEventListener('fetch', function(event) {
   }
 });
 
-self.addEventListener('activate', function(event) {
-	
-	console.log("suppression du cache");
-	event.waitUntil(
+// A chaque fois qu'on reçoit un
+// message d'une page web
+self.addEventListener("message", event => {
+  // On vérifie si c'est un signal
+  // d'activation
+  if (event.data === "skipWaiting") {
+    // Et si c'est le cas, on force
+    // l'activation
+    self.skipWaiting();
+	console.log("skipWaiting");
 		caches.keys().then(function(keyList) {
 			Promise.all(keyList.map(function(key) {
 				if (key!== Version) {
@@ -85,19 +91,7 @@ self.addEventListener('activate', function(event) {
 					});
 				});
 			});
-		})
-	);
-});
-// A chaque fois qu'on reçoit un
-// message d'une page web
-self.addEventListener("message", event => {
-  // On vérifie si c'est un signal
-  // d'activation
-  if (event.data === "skipWaiting") {
-    // Et si c'est le cas, on force
-    // l'activation
-    self.skipWaiting();
-	console.log("skipWaiting");
+		});	  
 
   }
 });
