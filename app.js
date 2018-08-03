@@ -100,6 +100,12 @@ window.onload = function() {
 		  var sw = registration.waiting;
 		  if(sw){
 		  	sw.postMessage("skipWaiting");
+			  console.log("2 before reload");
+			  setTimeout(function(){ 
+				console.log("reload");
+				hideNotification();
+				location.reload();  
+			  }, 3000);	
 		  }
 		  console.log("before reload");
 		  setTimeout(function(){ 
