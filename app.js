@@ -95,14 +95,15 @@ window.onload = function() {
 		// Et on lui envoie le
 		// message d'activation
 		  var sw = registration.waiting;
-		    if(sw){
-		  sw.postMessage("skipWaiting");
-		    }
-		    hideNotification();
-			console.log("before reload");
+		  if(sw){
+		  	sw.postMessage("skipWaiting").then(()=>{hideNotification();});
+		  }
+		  hideNotification();
+		  console.log("before reload");
 		  setTimeout(function(){ 
-			console.log("reload");
-			  location.reload();  }, 3000);		  
+		  	console.log("reload");
+		  	location.reload();  
+		  }, 3000);		  
 	      });
 	  });	
 	
