@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.45';
+var Version='1.46';
 self.addEventListener('install', function(event) {
   console.log('Service Worker Version #' + Version);
 });
@@ -80,24 +80,25 @@ self.addEventListener("message", event => {
     // Et si c'est le cas, on force
     // l'activation
     self.skipWaiting();
-	  console.log("skipWaiting");
-		caches.keys().then(function(keyList) {
-			return Promise.all(keyList.map(function(key) {
-				if (key!== Version) {
-					console.log("delete cache : "+key);
-					return caches.delete(key);
-				}
-			}));
-		});	  
-		caches.open(Version).then(function(cache) {
-		    Test=0;
-		      return cache.addAll([
-			'/TEST_RD/',
-			'/TEST_RD/index.html',
-			'/TEST_RD/style.css',
-			'/TEST_RD/app.js',
-			'/TEST_RD/gallery/wallpaper.jpg'
-		      ]);
-		    });
+  	console.log("skipWaiting");
+	caches.keys().then(function(keyList) {
+		Promise.all(keyList.map(function(key) {
+			if (key!== Version) {
+				console.log("delete cache : "+key);
+				caches.delete(key);
+			}
+		}));
+	});
+	console.log("after delete");
+	caches.open(Version).then(function(cache) {
+	    Test=0;
+	      return cache.addAll([
+		'/TEST_RD/',
+		'/TEST_RD/index.html',
+		'/TEST_RD/style.css',
+		'/TEST_RD/app.js',
+		'/TEST_RD/gallery/wallpaper.jpg'
+	      ]);
+	    });
   }
 });
