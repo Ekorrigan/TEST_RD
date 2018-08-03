@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.51';
+var Version='1.52';
 var forceNet = false;
 self.addEventListener('install', function(event) {
   console.log('Service Worker Version #' + Version);
@@ -103,6 +103,7 @@ self.addEventListener("message", event => {
 					'/TEST_RD/gallery/wallpaper2.jpg'
 				]).then(function(){ 
 						forceNet= false;
+						localStorage.setItem("curVer", Version);
 						console.log("fin activation");
 				});
 			});
