@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.43b';
+var Version='1.43c';
 self.addEventListener('install', function(event) {
   console.log('Service Worker Version #' + Version);
 });
@@ -84,8 +84,8 @@ self.addEventListener("message", event => {
 		caches.keys().then(function(keyList) {
 			return Promise.all(keyList.map(function(key) {
 				if (key!== Version) {
-					return caches.delete(key);
 					console.log("delete cache : "+key);
+					return caches.delete(key);
 				}
 			}));
 		});	  
