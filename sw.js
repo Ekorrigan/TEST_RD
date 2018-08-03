@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.65';
+var Version='1.66;
 var forceNet = false;
 self.addEventListener('install', function(event) {
   console.log('Service Worker Version #' + Version);
@@ -100,9 +100,9 @@ self.addEventListener("message", event => {
 					'/TEST_RD/app.js',
 					'/TEST_RD/gallery/wallpaper.jpg'
 				]).then(function() {
+					forceNet= false;
 					console.log("cache "+ Version+" chargé");
 					alert(Version);
-					forceNet= false;
 				});
 			});
 		});
