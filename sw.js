@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.68g';
+var Version='1.68h';
 var forceNet = false;
 self.addEventListener('install', function(event) {
   console.log('Service Worker Version #' + Version);
@@ -61,15 +61,31 @@ self.addEventListener('fetch', function(event) {
 
 self.addEventListener('activate', function(event) {
 	
-		console.log("suppression du cache");
+	console.log("suppression du cache");
 	event.waitUntil(
 		caches.keys().then(function(keyList) {
-			return Promise.all(keyList.map(function(key) {
+			Promise.all(keyList.map(function(key) {
 				if (key!== Version) {
+					console.log("delete cache : "+key+ " (v"+Version+")");
 					return caches.delete(key);
 				}
-			}));
-		})
+			})).then(function(){
+				console.log("after delete");
+				forceNet= true;
+				caches.open(Version).then(function(cache) {
+					console.log("chargement du cache");
+					cache.addAll([
+						'/TEST_RD/',
+						'/TEST_RD/index.html',
+						'/TEST_RD/style.css',
+						'/TEST_RD/app.js',
+						'/TEST_RD/gallery/wallpaper.jpg'
+					]).then(function() {
+						forceNet= false;
+					});
+				});
+			});
+		});
 	);
 });
 // A chaque fois qu'on reçoit un
@@ -81,29 +97,7 @@ self.addEventListener("message", event => {
     // Et si c'est le cas, on force
     // l'activation
     self.skipWaiting();
-  	console.log("skipWaiting");
-	caches.keys().then(function(keyList) {
-		Promise.all(keyList.map(function(key) {
-			if (key!== Version) {
-				console.log("delete cache : "+key+ " (v"+Version+")");
-				return caches.delete(key);
-			}
-		})).then(function(){
-			console.log("after delete");
-			forceNet= true;
-			caches.open(Version).then(function(cache) {
-				console.log("chargement du cache");
-				cache.addAll([
-					'/TEST_RD/',
-					'/TEST_RD/index.html',
-					'/TEST_RD/style.css',
-					'/TEST_RD/app.js',
-					'/TEST_RD/gallery/wallpaper.jpg'
-				]).then(function() {
-					forceNet= false;
-				});
-			});
-		});
-	});
+	console.log("skipWaiting");
+
   }
 });
