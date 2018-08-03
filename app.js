@@ -72,18 +72,19 @@ window.onload = function() {
 	j_get("/TEST_RD/version/",function(text){ 
 		document.getElementById("myTitle").innerHTML += " #"+text;
 		curVer = localStorage.getItem("curVer");
-		console.log("---> version :" + curVer +" <---")
 		if(!curVer){
 			console.log("mise à jour du numéro de version : " + text);
 			localStorage.setItem("curVer", text);
+			curVer= text;
 		}
 		else if(curVer!=text){
+			console.log(curVer+"/"+text);
               		displayNotification();
 		}
 		else{
 			hideNotification();
+			console.log("---> version :" + curVer +" <---")
 		}
-		console.log(curVer+"/"+text);
 	});
 
 	// Au clic du bouton de notification
