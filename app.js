@@ -79,6 +79,9 @@ window.onload = function() {
 		else if(curVer!=text){
               		displayNotification();
 		}
+		else{
+			hideNotification();
+		}
 		console.log(curVer+"/"+text);
 	});
 
