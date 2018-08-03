@@ -1,5 +1,6 @@
 var Test=0;
-var Version='1.50';
+var Version='1.51';
+var forceNet = false;
 self.addEventListener('install', function(event) {
   console.log('Service Worker Version #' + Version);
 });
@@ -29,7 +30,7 @@ self.addEventListener('fetch', function(event) {
 		if (Test==0){ Test++; console.log('version #'+Version);}
 		// caches.match() always resolves
 		// but in case of success response will have value
-		if (response !== undefined) {
+		if (!forceNet && response !== undefined) {
 			if(response.status!=200){
 				response= caches.match('/TEST_RD/gallery/wallpaper.jpg');
 				caches.open(Version).then(function (cache) {
@@ -89,6 +90,7 @@ self.addEventListener("message", event => {
 			}
 		})).then(()=>{
 			console.log("after delete");
+			forceNet= true;
 			caches.open(Version).then(function(cache) {
 				console.log("ajout du cache");
 				Test=0;
@@ -99,10 +101,12 @@ self.addEventListener("message", event => {
 					'/TEST_RD/app.js',
 					'/TEST_RD/gallery/wallpaper.jpg',
 					'/TEST_RD/gallery/wallpaper2.jpg'
-				]);
+				]).then(function(){ 
+						forceNet= false;
+						console.log("fin activation");
+				});
 			});
 		});
 	});
-	console.log("fin activation");
   }
 });
