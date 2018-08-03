@@ -92,12 +92,12 @@ window.onload = function() {
 	    navigator.serviceWorker
 	      .getRegistration()
 	      .then(registration => {
-		    
-		console.log(registration);
 		// Et on lui envoie le
 		// message d'activation
 		  var sw = registration.waiting;
+		    if(sw){
 		  sw.postMessage("skipWaiting");
+		    }
 		    hideNotification();
 			console.log("before reload");
 		  setTimeout(function(){ 
