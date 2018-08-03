@@ -102,7 +102,7 @@ window.onload = function() {
 				console.log("reload");
 				hideNotification();
 				location.reload();  
-			  }, 3000);	
+			  }, 5000);	
 	    // On récupère le Service Worker
 	    // qui a fini de s'installer
 	    // (waiting)
