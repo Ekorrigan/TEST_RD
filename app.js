@@ -71,6 +71,7 @@ window.onload = function() {
 	j_get("/TEST_RD/version/",function(text){ 
 		document.getElementById("myTitle").innerHTML += " #"+text;
 		curVer = localStorage.getItem("curVer");
+		console.log("---> version :" + curVer +" <---")
 		if(!curVer){
 			localStorage.setItem("curVer", text);
 		}
