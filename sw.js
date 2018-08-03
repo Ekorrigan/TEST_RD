@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.68h';
+var Version='1.69';
 var forceNet = false;
 self.addEventListener('install', function(event) {
   console.log('Service Worker Version #' + Version);
