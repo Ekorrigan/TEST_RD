@@ -85,7 +85,7 @@ self.addEventListener('activate', function(event) {
 					});
 				});
 			});
-		});
+		})
 	);
 });
 // A chaque fois qu'on reçoit un
