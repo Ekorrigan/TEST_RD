@@ -35,6 +35,7 @@ if ('serviceWorker' in navigator) {
         // il a fini de s'installer
         newWorker.addEventListener("statechange",() => {
             if (newWorker.state === "installed") {
+		    console.log(newWorker);
               // Un nouveau Service
               // Worker est prêt.
               // Donc on affiche la
