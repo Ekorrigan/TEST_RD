@@ -20,7 +20,8 @@ function hideNotification() {
 	j_get("/TEST_RD/version/",function(text){ 
 		document.getElementById("myTitle").innerHTML = "l'application est prête";
 		localStorage.setItem("curVer", text);
-	});	
+		console.log("nouvelle version : "+text);
+	});
 }
 
 
