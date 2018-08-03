@@ -74,6 +74,7 @@ window.onload = function() {
 		curVer = localStorage.getItem("curVer");
 		console.log("---> version :" + curVer +" <---")
 		if(!curVer){
+			console.log("mise à jour du numéro de version : " + text);
 			localStorage.setItem("curVer", text);
 		}
 		else if(curVer!=text){
