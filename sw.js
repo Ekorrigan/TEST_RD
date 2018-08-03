@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.40';
+var Version='1.41';
 self.addEventListener('install', function(event) {
   console.log('Service Worker Version #' + Version);
 });
@@ -36,7 +36,7 @@ self.addEventListener('fetch', function(event) {
 					cache.put(event.request, response.clone());
 				});
 			}
-	  console.log("cache : "+curUrl.pathname);
+	  console.log("cache ("+Version+"): "+curUrl.pathname);
 			return response;
 		} else {
 			return fetch(event.request).then(function (response) {
