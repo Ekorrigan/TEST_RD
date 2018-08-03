@@ -46,7 +46,7 @@ if ('serviceWorker' in navigator) {
       }
     );
   });
-  navigator.serviceWorker.register('/TEST_RD/sw.js', { scope: '/TEST_RD/' }).then(function(reg) {
+  navigator.serviceWorker.register('/TEST_RD/sw.js').then(function(reg) {
 
     if(reg.installing) {
       console.log('# Service worker installing #');
@@ -58,6 +58,7 @@ if ('serviceWorker' in navigator) {
 	j_get("/TEST_RD/version/",function(text){ 
       		console.log('# Service worker active #',text);
 	  	document.getElementById("myTitle").innerHTML = "Service worker active";
+		localStorage.setItem("curVer", text);
 	});
     }
   }).catch(function(error) {
