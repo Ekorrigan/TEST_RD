@@ -99,7 +99,14 @@ window.onload = function() {
 		// message d'activation
 		  var sw = registration.waiting;
 		  if(sw){
-		  	sw.postMessage("skipWaiting").then(()=>{hideNotification();});
+		  	sw.postMessage("skipWaiting").then(()=>{
+			  hideNotification();
+			  console.log("before reload");
+			  setTimeout(function(){ 
+				console.log("reload");
+				location.reload();  
+			  }, 3000);	
+			});
 		  }
 		  hideNotification();
 		  console.log("before reload");
