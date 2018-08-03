@@ -1,8 +1,8 @@
 var Test=0;
-var Version='1.63';
+var Version='1.64';
 var forceNet = false;
 self.addEventListener('install', function(event) {
-  console.log('Service Worker Version #' + Version);
+  console.log('Service Worker Version #' + Version + " - " + localStorage.getItem("curVer"));
 });
 
 self.addEventListener('fetch', function(event) {
