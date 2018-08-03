@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.47b';
+var Version='1.48';
 self.addEventListener('install', function(event) {
   console.log('Service Worker Version #' + Version);
 });
@@ -90,6 +90,7 @@ self.addEventListener("message", event => {
 		})).then(()=>{
 			console.log("after delete");
 			caches.open(Version).then(function(cache) {
+				console.log("ajout du cache");
 				Test=0;
 					return cache.addAll([
 					'/TEST_RD/',
