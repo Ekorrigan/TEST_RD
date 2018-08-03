@@ -77,12 +77,15 @@ window.onload = function() {
 	// Au clic du bouton de notification
 	document.querySelector("#on-activation-request")
 	  .addEventListener("click", () => {
+		console.log("ok pour mise à jour");
 	    // On récupère le Service Worker
 	    // qui a fini de s'installer
 	    // (waiting)
 	    navigator.serviceWorker
 	      .getRegistration()
 	      .then(registration => {
+		    
+		console.log(registration);
 		// Et on lui envoie le
 		// message d'activation
 		  var sw = registration.waiting;
