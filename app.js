@@ -1,3 +1,5 @@
+
+var curVer;
 // register service worker
 function j_get(url, callback)
 {
@@ -18,9 +20,11 @@ function displayNotification() {
 function hideNotification() {
 	document.querySelector("#notification").style.display = "none";
 	j_get("/TEST_RD/version/",function(text){ 
-		document.getElementById("myTitle").innerHTML = "l'application est prête";
-		localStorage.setItem("curVer", text);
-		console.log("nouvelle version : "+text);
+		if (curVer!=text){
+			document.getElementById("myTitle").innerHTML = "l'application est prête";
+			localStorage.setItem("curVer", text);
+			console.log("nouvelle version : "+text);
+		}
 	});
 }
 
@@ -70,7 +74,6 @@ if ('serviceWorker' in navigator) {
 }
 
 window.onload = function() {
-	var curVer;
 	j_get("/TEST_RD/version/",function(text){ 
 		document.getElementById("myTitle").innerHTML += " #"+text;
 		curVer = localStorage.getItem("curVer");
