@@ -20,6 +20,7 @@ function displayNotification() {
 function hideNotification() {
 	document.querySelector("#notification").style.display = "none";
 	j_get("/TEST_RD/version/",function(text){ 
+		console.log("hoide Notif, getVersion : "+text);
 		if (curVer!=text){
 			document.getElementById("myTitle").innerHTML = "l'application est prête";
 			localStorage.setItem("curVer", text);
