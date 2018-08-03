@@ -71,7 +71,7 @@ if ('serviceWorker' in navigator) {
 window.onload = function() {
 	var curVer;
 	j_get("/TEST_RD/version/",function(text){ 
-		document.getElementById("myTitle").innerHTML += " v"+text;
+		document.getElementById("myTitle").innerHTML += " #"+text;
 		curVer = localStorage.getItem("curVer");
 		if(!curVer){
 			localStorage.setItem("curVer", text);
