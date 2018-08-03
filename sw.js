@@ -2,7 +2,7 @@ var Test=0;
 var Version='1.65';
 var forceNet = false;
 self.addEventListener('install', function(event) {
-  console.log('Service Worker Version #' + Version));
+  console.log('Service Worker Version #' + Version);
 });
 
 self.addEventListener('fetch', function(event) {
