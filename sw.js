@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.59d';
+var Version='1.60';
 var forceNet = false;
 self.addEventListener('install', function(event) {
   console.log('Service Worker Version #' + Version);
@@ -89,10 +89,10 @@ self.addEventListener("message", event => {
 				return caches.delete(key);
 			}
 		})).then(function(){
-			console.log("--->after delete");
+			console.log("after delete");
 			forceNet= true;
 			caches.open(Version).then(function(cache) {
-				console.log("--->chargement du cache");
+				console.log("chargement du cache");
 				cache.addAll([
 					'/TEST_RD/',
 					'/TEST_RD/index.html',
@@ -100,10 +100,8 @@ self.addEventListener("message", event => {
 					'/TEST_RD/app.js',
 					'/TEST_RD/gallery/wallpaper.jpg'
 				]).then(function() {
-					alert(Version);
 					forceNet= false;
 					localStorage.setItem("curVer", Version);
-					console.log("------------------> fin activation #"+ localStorage.getItem("curVer"));
 				});
 			});
 		});
