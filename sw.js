@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.58';
+var Version='1.58b';
 var forceNet = false;
 self.addEventListener('install', function(event) {
   console.log('Service Worker Version #' + Version);
@@ -94,7 +94,7 @@ self.addEventListener("message", event => {
 			caches.open(Version).then(function(cache) {
 				console.log("ajout du cache");
 				Test=0;
-					return cache.addAll([
+					cache.addAll([
 					'/TEST_RD/',
 					'/TEST_RD/index.html',
 					'/TEST_RD/style.css',
