@@ -1,5 +1,5 @@
 var Test=0;
-var Version='1.57';
+var Version='1.58';
 var forceNet = false;
 self.addEventListener('install', function(event) {
   console.log('Service Worker Version #' + Version);
@@ -104,7 +104,7 @@ self.addEventListener("message", event => {
 				]).then(function(){ 
 						forceNet= false;
 						localStorage.setItem("curVer", Version);
-						console.log("fin activation #"+ localStorage.getItem("curVer"));
+						console.log("------------------> fin activation #"+ localStorage.getItem("curVer"));
 				});
 			});
 		});
