@@ -15,6 +15,14 @@ function displayNotification() {
 }
 
 
+function hideNotification() {
+	document.querySelector("#notification").style.display = "none";
+	j_get("/TEST_RD/version/",function(text){ 
+		document.getElementById("myTitle").innerHTML += " v"+text;
+		localStorage.setItem("curVer", text);
+	});	
+}
+
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.getRegistration().then(registration => {
@@ -72,7 +80,7 @@ window.onload = function() {
               		displayNotification();
 		}
 		console.log(curVer+"/"+text);
-	})
+	});
 
 	// Au clic du bouton de notification
 	document.querySelector("#on-activation-request")
@@ -90,7 +98,11 @@ window.onload = function() {
 		// message d'activation
 		  var sw = registration.waiting;
 		  sw.postMessage("skipWaiting");
-		  setTimeout(function(){ location.reload();  }, 3000);		  
+		    hideNotification();
+			console.log("before reload");
+		  setTimeout(function(){ 
+			console.log("reload");
+			  location.reload();  }, 3000);		  
 	      });
 	  });	
 	
