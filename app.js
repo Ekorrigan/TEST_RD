@@ -96,7 +96,7 @@ window.onload = function() {
 				console.log("reload");
 				hideNotification();
 				location.reload();  
-			  }, 500);	
+			  }, 1500);	
 	    // On récupère le Service Worker
 	    // qui a fini de s'installer
 	    // (waiting)
